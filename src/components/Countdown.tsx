@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Clock, Calendar } from "lucide-react";
+import { TypingEffect } from "./TypingEffect";
 
 interface TimeRemaining {
   days: number;
@@ -69,8 +70,12 @@ export const Countdown = () => {
           <Calendar className="h-4 w-4" />
           Launch Countdown
         </div>
-        <h3 className="text-xl md:text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-          Get Ready for October 1st!
+        <h3 className="text-xl md:text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent min-h-[32px] md:min-h-[40px]">
+          <TypingEffect 
+            text="Get Ready for October 1st!"
+            speed={100}
+            delay={500}
+          />
         </h3>
         <p className="text-sm text-muted-foreground mt-2">
           Something amazing is coming

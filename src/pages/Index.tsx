@@ -1,5 +1,6 @@
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { Countdown } from "@/components/Countdown";
+import { TypingEffect } from "@/components/TypingEffect";
 import heroTeddy from "@/assets/hero-teddy.jpg";
 import { Heart, Sparkles, Package, Star, Zap, Shield } from "lucide-react";
 
@@ -23,14 +24,32 @@ const Index = () => {
                   <Sparkles className="h-4 w-4" />
                   Coming Soon
                 </div>
-                <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold leading-tight">
-                  Custom
-                  <span className="bg-gradient-primary bg-clip-text text-transparent"> 3D Printed</span>
+                <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold leading-tight min-h-[120px] md:min-h-[140px] lg:min-h-[180px]">
+                  <TypingEffect 
+                    text="Custom" 
+                    speed={150}
+                    className="block"
+                  />
+                  <TypingEffect 
+                    text=" 3D Printed" 
+                    speed={120}
+                    delay={800}
+                    className="bg-gradient-primary bg-clip-text text-transparent"
+                  />
                   <br />
-                  <span className="text-2xl md:text-3xl lg:text-5xl">Creations</span>
+                  <TypingEffect 
+                    text="Creations" 
+                    speed={140}
+                    delay={2200}
+                    className="text-2xl md:text-3xl lg:text-5xl block"
+                  />
                 </h1>
-                <p className="text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed mx-auto lg:mx-0">
-                  Bring your imagination to life with personalized 3D printed toys and collectibles. Each one crafted with love, precision, and cutting-edge technology.
+                <p className="text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed mx-auto lg:mx-0 min-h-[60px]">
+                  <TypingEffect 
+                    text="Bring your imagination to life with personalized 3D printed toys and collectibles. Each one crafted with love, precision, and cutting-edge technology."
+                    speed={50}
+                    delay={3500}
+                  />
                 </p>
               </div>
               
@@ -105,11 +124,30 @@ const Index = () => {
               <Star className="h-4 w-4" />
               Our Promise
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Why Choose <span className="bg-gradient-primary bg-clip-text text-transparent">Cudliy</span>?
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 min-h-[48px] md:min-h-[56px]">
+              <TypingEffect 
+                text="Why Choose "
+                speed={120}
+                delay={1000}
+              />
+              <TypingEffect 
+                text="Cudliy"
+                speed={150}
+                delay={2500}
+                className="bg-gradient-primary bg-clip-text text-transparent"
+              />
+              <TypingEffect 
+                text="?"
+                speed={200}
+                delay={3500}
+              />
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Revolutionizing creativity with cutting-edge 3D printing technology and unmatched attention to detail
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed min-h-[50px]">
+              <TypingEffect 
+                text="Revolutionizing creativity with cutting-edge 3D printing technology and unmatched attention to detail"
+                speed={60}
+                delay={4000}
+              />
             </p>
           </div>
 
@@ -192,7 +230,7 @@ const Index = () => {
             
             <div className="pt-6 border-t border-white/20">
               <p className="text-xs text-muted-foreground">
-                © 2024 Cudliy. All rights reserved. | Crafted with precision and passion.
+                © 2025 Cudliy. All rights reserved. | Crafted with precision and passion.
               </p>
             </div>
           </div>

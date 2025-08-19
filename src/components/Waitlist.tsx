@@ -81,8 +81,8 @@ const Waitlist = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent | React.MouseEvent) => {
+    if (e) e.preventDefault();
     setIsLoading(true);
     
     try {
@@ -224,7 +224,10 @@ const Waitlist = () => {
             <p className="text-gray-600 font-manrope text-sm sm:text-base">Your imagination deserves to become real.</p>
           </div>
 
-          <div className={`space-y-4 sm:space-y-6 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+          <div 
+            className={`space-y-4 sm:space-y-6 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+            onSubmit={handleSubmit}
+          >
             {/* Role Selector */}
             <div className="flex bg-gray-100 rounded-lg p-1 mx-auto" style={{ width: '138px', height: '39px' }}>
               <button
@@ -510,13 +513,14 @@ const Waitlist = () => {
             {/* Submit Button */}
             <div className="flex justify-center my-8">
               <Button
-                type="submit"
+                type="button"
+                onClick={handleSubmit}
                 disabled={isLoading}
-                className="text-white font-medium transition-colors"
+                className="text-white font-medium transition-colors hover:bg-[#d1094a]"
                 style={{
                   display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',
                   padding: '14px 40px', gap: '10px', width: '131px', height: '55px',
-                  background: '#E70A55', borderRadius: '22px'
+                  background: '#E70A55', borderRadius: '22px', border: 'none'
                 }}
               >
                 {isLoading ? "Joining..." : "Join"}
@@ -580,7 +584,7 @@ const Waitlist = () => {
                 fontFamily: 'Manrope',
                 color: 'transparent',
                 WebkitTextStroke: '3px rgba(255, 255, 255, 0.9)',
-                textShadow: '0 0 10px rgba(255, 255, 255, 0.3)',
+                background: 'transparent',
                 lineHeight: 0.8
               } as React.CSSProperties}
             >

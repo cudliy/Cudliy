@@ -584,7 +584,7 @@ const Waitlist = () => {
                 fontSize: 'clamp(3rem, 8vw, 8rem)',
                 fontFamily: 'Manrope',
                 color: 'transparent',
-                WebkitTextStroke: '3px rgba(255, 255, 255, 0.58)',
+                WebkitTextStroke: '0.5px rgba(255, 255, 255, 0.58)',
                 background: 'transparent',
                 lineHeight: 0.8
               } as React.CSSProperties}

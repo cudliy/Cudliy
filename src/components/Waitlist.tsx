@@ -6,7 +6,8 @@ import { useToast } from "@/hooks/use-toast";
 const Waitlist = () => {
   const [selectedRole, setSelectedRole] = useState<"designer" | "maker">("designer");
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     experience: "",
     productionStyle: ""
@@ -85,10 +86,19 @@ const Waitlist = () => {
     setIsLoading(true);
     
     try {
-      if (!formData.name.trim()) {
+      if (!formData.firstName.trim()) {
         toast({
           title: "Error",
-          description: "Please enter your name",
+          description: "Please enter your first name",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      if (!formData.lastName.trim()) {
+        toast({
+          title: "Error",
+          description: "Please enter your last name",
           variant: "destructive",
         });
         return;
@@ -103,7 +113,56 @@ const Waitlist = () => {
         return;
       }
 
-      // Simulate API call for demo
+      // Simulate API call for demo - In real implementation, this would be:
+      /*
+      const { data: existingUser, error: checkError } = await supabase
+        .from('waitlist')
+        .select('email, role')
+        .eq('email', formData.email)
+        .eq('role', selectedRole)
+        .single();
+
+      if (checkError && checkError.code !== 'PGRST116') {
+        console.error("Error checking existing user:", checkError);
+        toast({
+          title: "Error",
+          description: "Something went wrong. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      if (existingUser) {
+        toast({
+          title: "Already Registered",
+          description: `This email is already registered as a ${selectedRole}.`,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      // Insert new waitlist entry with first_name and last_name
+      const { error: insertError } = await supabase
+        .from('waitlist')
+        .insert({
+          first_name: formData.firstName.trim(),
+          last_name: formData.lastName.trim(),
+          email: formData.email,
+          role: selectedRole,
+          experience: selectedRole === "designer" ? formData.experience : null,
+          production_style: selectedRole === "maker" ? formData.productionStyle : null
+        });
+
+      if (insertError) {
+        console.error("Error inserting waitlist entry:", insertError);
+        toast({
+          title: "Error",
+          description: "Failed to join waitlist. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+      */
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       // Success
@@ -113,7 +172,7 @@ const Waitlist = () => {
       });
 
       // Reset form
-      setFormData({ name: "", email: "", experience: "", productionStyle: "" });
+      setFormData({ firstName: "", lastName: "", email: "", experience: "", productionStyle: "" });
 
     } catch (error) {
       console.error("Unexpected error:", error);
@@ -190,12 +249,31 @@ const Waitlist = () => {
               </button>
             </div>
 
-            {/* Name Input */}
+            {/* First Name Input */}
             <Input
               type="text"
-              placeholder="Name"
-              value={formData.name}
-              onChange={(e) => handleInputChange("name", e.target.value)}
+              placeholder="First Name"
+              value={formData.firstName}
+              onChange={(e) => handleInputChange("firstName", e.target.value)}
+              className="border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent"
+              style={{ 
+                width: '100%', 
+                maxWidth: '508px', 
+                height: '50px', 
+                padding: '14px 20px',
+                borderRadius: '25px',
+                border: '0.5px solid #000000',
+                boxSizing: 'border-box'
+              }}
+              required
+            />
+
+            {/* Last Name Input */}
+            <Input
+              type="text"
+              placeholder="Last Name"
+              value={formData.lastName}
+              onChange={(e) => handleInputChange("lastName", e.target.value)}
               className="border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent"
               style={{ 
                 width: '100%', 
@@ -472,28 +550,8 @@ const Waitlist = () => {
           borderBottomLeftRadius: '40px'
         }}
       >
-        {/* CUD Text - Top Left with proper overlay positioning */}
-        <div 
-          className={`absolute top-8 left-8 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-          style={{ zIndex: 30 }}
-        >
-          <div 
-            className="font-bold select-none pointer-events-none"
-            style={{ 
-              fontSize: 'clamp(3rem, 8vw, 8rem)',
-              fontFamily: 'Manrope',
-              color: 'transparent',
-              WebkitTextStroke: '2px rgba(255, 255, 255, 0.8)',
-              opacity: 0.9,
-              lineHeight: 0.8
-            } as React.CSSProperties}
-          >
-            CUD
-          </div>
-        </div>
-
-        {/* Central Image - Scaled up and properly positioned */}
-        <div className={`absolute inset-0 flex items-center justify-center transform transition-all duration-1000 delay-300 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`} style={{ zIndex: 10 }}>
+        {/* Central Image - Background layer */}
+        <div className={`absolute inset-0 flex items-center justify-center transform transition-all duration-1000 delay-300 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
           <img
             src={selectedRole === "designer" ? "/image 2.png" : "/image 1.png"}
             alt={selectedRole === "designer" ? "Designer Background" : "Maker Background"}
@@ -509,23 +567,44 @@ const Waitlist = () => {
           />
         </div>
 
-        {/* LIY Text - Bottom Right with proper overlay positioning */}
-        <div 
-          className={`absolute bottom-8 right-8 transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-          style={{ zIndex: 30 }}
-        >
+        {/* Text Overlay Layer - This will be on top */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* CUD Text - Top Left */}
           <div 
-            className="font-bold select-none pointer-events-none"
-            style={{ 
-              fontSize: 'clamp(3rem, 8vw, 8rem)',
-              fontFamily: 'Manrope',
-              color: 'transparent',
-              WebkitTextStroke: '2px rgba(255, 255, 255, 0.8)',
-              opacity: 0.9,
-              lineHeight: 0.8
-            } as React.CSSProperties}
+            className={`absolute top-8 left-8 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
           >
-            LIY
+            <div 
+              className="font-bold select-none"
+              style={{ 
+                fontSize: 'clamp(3rem, 8vw, 8rem)',
+                fontFamily: 'Manrope',
+                color: 'transparent',
+                WebkitTextStroke: '3px rgba(255, 255, 255, 0.9)',
+                textShadow: '0 0 10px rgba(255, 255, 255, 0.3)',
+                lineHeight: 0.8
+              } as React.CSSProperties}
+            >
+              CUD
+            </div>
+          </div>
+
+          {/* LIY Text - Bottom Right */}
+          <div 
+            className={`absolute bottom-8 right-8 transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+          >
+            <div 
+              className="font-bold select-none"
+              style={{ 
+                fontSize: 'clamp(3rem, 8vw, 8rem)',
+                fontFamily: 'Manrope',
+                color: 'transparent',
+                WebkitTextStroke: '3px rgba(255, 255, 255, 0.9)',
+                textShadow: '0 0 10px rgba(255, 255, 255, 0.3)',
+                lineHeight: 0.8
+              } as React.CSSProperties}
+            >
+              LIY
+            </div>
           </div>
         </div>
       </div>

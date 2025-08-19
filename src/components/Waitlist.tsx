@@ -533,39 +533,54 @@ const Waitlist = () => {
 
       {/* Right Section - Visual Branding */}
       <div 
-        className={`lg:flex lg:w-1/2 relative overflow-hidden transform transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
+        className={`lg:flex lg:w-1/2 relative transform transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
         style={{ 
           backgroundColor: '#FBB871',
           borderTopLeftRadius: '40px',
           borderBottomLeftRadius: '40px',
-          position: 'relative'
+          position: 'relative',
+          zIndex: 1
         }}
       >
         {/* Central Image */}
-        <div className={`absolute inset-0 flex items-center justify-center transform transition-all duration-1000 delay-300 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
+        <div className={`absolute inset-0 flex items-center justify-center transform transition-all duration-1000 delay-300 z-10 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
           <img
             src={selectedRole === "designer" ? "/image 2.png" : "/image 1.png"}
             alt={selectedRole === "designer" ? "Designer Background" : "Maker Background"}
-            className="object-contain z-10"
+            className="object-contain"
             style={{ 
               width: '682px', 
               height: '458px', 
               maxWidth: '90%', 
-              maxHeight: '90%',
-              position: 'relative',
-              zIndex: 10
+              maxHeight: '90%'
             }}
           />
         </div>
 
         {/* CUD Text - Top Left with overlay effect */}
-        <div className={`absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8 z-20 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-manrope font-bold cudliy-outline-white" style={{ opacity: 0.58 }}>CUD</div>
+        <div 
+          className={`absolute z-50 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} 
+          style={{ 
+            top: '2rem', 
+            left: '2rem', 
+            pointerEvents: 'none',
+            zIndex: 50
+          }}
+        >
+          <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-manrope font-bold cudliy-outline-white">CUD</div>
         </div>
 
         {/* LIY Text - Bottom Right with overlay effect */}
-        <div className={`absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-20 transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-manrope font-bold cudliy-outline-white" style={{ opacity: 0.58 }}>LIY</div>
+        <div 
+          className={`absolute z-50 transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} 
+          style={{ 
+            bottom: '2rem', 
+            right: '2rem', 
+            pointerEvents: 'none',
+            zIndex: 50
+          }}
+        >
+          <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-manrope font-bold cudliy-outline-white">LIY</div>
         </div>
       </div>
     </div>

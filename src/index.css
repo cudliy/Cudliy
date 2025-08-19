@@ -168,15 +168,13 @@
   /* White outlined CUDLIY for auth pages */
   .cudliy-outline-white {
     color: transparent;
-    opacity: 0.5;
+    opacity: 0.58;
     -webkit-text-stroke: 1px #FFFFFF;
     text-stroke: 1px #FFFFFF; /* non-standard fallback */
     pointer-events: none;
     user-select: none;
     line-height: 1;
     white-space: nowrap;
-    position: relative;
-    z-index: 20;
   }
 
   /* Hide scrollbar for horizontal gallery */

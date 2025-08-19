@@ -2,48 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Cudliy Design System - Glass morphism and coral gradients */
 
 @layer base {
   :root {
-    --background: 345 100% 97%;
-    --foreground: 345 15% 15%;
+    /* Cudliy Brand Colors */
+    --background: 220 12% 94%;
+    --foreground: 0 0% 0%;
 
+    /* Coral/Pink Brand Palette */
+    --coral-primary: 6 89% 85%;
+    --coral-secondary: 343 100% 88%;
+    --coral-accent: 320 100% 85%;
+    --mint-accent: 162 63% 75%;
+    
+    /* Glass morphism */
+    --glass-bg: 0 0% 93% / 0.51;
+    --glass-border: 0 0% 96%;
+    
+    /* Text colors */
+    --text-primary: 0 0% 0%;
+    --text-secondary: 0 0% 40%;
+    --text-white: 0 0% 100%;
+    
+    /* Gradients */
+    --gradient-coral: linear-gradient(135deg, hsl(var(--coral-primary)), hsl(var(--coral-secondary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--coral-primary)), hsl(var(--coral-accent)));
+    --gradient-mint: linear-gradient(135deg, hsl(var(--mint-accent)), hsl(var(--coral-secondary)));
+
+    /* Cards & Components */
     --card: 0 0% 100%;
-    --card-foreground: 345 15% 15%;
+    --card-foreground: 0 0% 0%;
+    
+    --primary: 343 100% 88%;
+    --primary-foreground: 0 0% 0%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 345 15% 15%;
+    --secondary: 162 63% 75%;
+    --secondary-foreground: 0 0% 0%;
 
-    --primary: 345 85% 65%;
-    --primary-foreground: 0 0% 100%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --secondary: 345 20% 90%;
-    --secondary-foreground: 345 15% 25%;
-
-    --muted: 345 10% 95%;
-    --muted-foreground: 345 10% 45%;
-
-    --accent: 25 85% 70%;
-    --accent-foreground: 345 15% 15%;
+    --accent: 320 100% 85%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 345 15% 88%;
-    --input: 345 15% 92%;
-    --ring: 345 85% 65%;
+    --border: 0 0% 90%;
+    --input: 0 0% 96%;
+    --ring: 343 100% 88%;
 
-    --radius: 1rem;
-    
-    /* Custom design tokens for 3D printing theme */
-    --gradient-primary: linear-gradient(135deg, hsl(345 85% 65%), hsl(25 85% 70%));
-    --gradient-background: linear-gradient(180deg, hsl(345 100% 97%), hsl(345 20% 95%));
-    --shadow-soft: 0 4px 20px hsl(345 85% 65% / 0.15);
-    --shadow-glow: 0 0 30px hsl(345 85% 65% / 0.3);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 1.5rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -108,5 +118,116 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .glass-nav {
+    background: hsl(var(--glass-bg));
+    border: 1px solid hsl(var(--glass-border));
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+  
+  .gradient-coral {
+    background: var(--gradient-coral);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-mint {
+    background: var(--gradient-mint);
+  }
+  
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Hero typography */
+  .font-abril {
+    font-family: 'Abril Fatface', cursive;
+  }
+  .font-manrope {
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  }
+
+  /* Outlined CUDLIY vector wordmark */
+  .cudliy-outline {
+    color: transparent;
+    opacity: 0.48;
+    -webkit-text-stroke: 1px #000;
+    text-stroke: 1px #000; /* non-standard fallback */
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  /* White outlined CUDLIY for auth pages */
+  .cudliy-outline-white {
+    color: transparent;
+    opacity: 0.5;
+    -webkit-text-stroke: 1px #FFFFFF;
+    text-stroke: 1px #FFFFFF; /* non-standard fallback */
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    white-space: nowrap;
+    position: relative;
+    z-index: 20;
+  }
+
+  /* Hide scrollbar for horizontal gallery */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
+
+  /* Custom dropdown styling */
+  .custom-dropdown-content {
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .custom-dropdown-content [data-radix-select-viewport] {
+    padding: 0 !important;
+  }
+
+  .custom-dropdown-item {
+    position: relative !important;
+    padding: 16px 20px !important;
+    border-radius: 26px !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    line-height: 22px !important;
+    color: #2C2E3D !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .custom-dropdown-item:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .custom-dropdown-item[data-state="checked"] {
+    background: rgba(231, 10, 85, 0.1) !important;
+    border-color: #E70A55 !important;
+  }
+
+  .custom-dropdown-item[data-state="checked"]::before {
+    content: "✓";
+    position: absolute;
+    right: 20px;
+    color: #E70A55;
+    font-weight: bold;
   }
 }

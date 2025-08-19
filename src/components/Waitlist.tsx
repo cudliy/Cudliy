@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 const Waitlist = () => {
@@ -114,7 +115,8 @@ const Waitlist = () => {
       }
 
       // Simulate API call for demo - In real implementation, this would be:
-      /*
+      
+      // Check if email already exists for this role
       const { data: existingUser, error: checkError } = await supabase
         .from('waitlist')
         .select('email, role')
@@ -123,6 +125,7 @@ const Waitlist = () => {
         .single();
 
       if (checkError && checkError.code !== 'PGRST116') {
+        // PGRST116 is "not found" error, which is expected
         console.error("Error checking existing user:", checkError);
         toast({
           title: "Error",
@@ -162,7 +165,6 @@ const Waitlist = () => {
         });
         return;
       }
-      */
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       // Success
@@ -583,7 +585,7 @@ const Waitlist = () => {
                 fontSize: 'clamp(3rem, 8vw, 8rem)',
                 fontFamily: 'Manrope',
                 color: 'transparent',
-                WebkitTextStroke: '3px rgba(255, 255, 255, 0.9)',
+                WebkitTextStroke: '3px rgba(255, 255, 255, 0.58)',
                 background: 'transparent',
                 lineHeight: 0.8
               } as React.CSSProperties}

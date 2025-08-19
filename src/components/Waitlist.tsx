@@ -144,12 +144,11 @@ const Waitlist = () => {
         return;
       }
 
-      // Insert new waitlist entry with first_name and last_name
+      // Insert new waitlist entry with combined name
       const { error: insertError } = await supabase
         .from('waitlist')
         .insert({
-          first_name: formData.firstName.trim(),
-          last_name: formData.lastName.trim(),
+          name: `${formData.firstName.trim()} ${formData.lastName.trim()}`,
           email: formData.email,
           role: selectedRole,
           experience: selectedRole === "designer" ? formData.experience : null,

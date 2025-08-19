@@ -595,7 +595,7 @@ const Waitlist = () => {
 
           {/* LIY Text - Bottom Right */}
           <div 
-            className={`absolute bottom-8 right-8 transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            className={`absolute top-8 left-8 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
           >
             <div 
               className="font-bold select-none"
@@ -603,8 +603,8 @@ const Waitlist = () => {
                 fontSize: 'clamp(3rem, 8vw, 8rem)',
                 fontFamily: 'Manrope',
                 color: 'transparent',
-                WebkitTextStroke: '3px rgba(255, 255, 255, 0.9)',
-                textShadow: '0 0 10px rgba(255, 255, 255, 0.3)',
+                WebkitTextStroke: '0.5px rgba(255, 255, 255, 0.58)',
+                background: 'transparent',
                 lineHeight: 0.8
               } as React.CSSProperties}
             >

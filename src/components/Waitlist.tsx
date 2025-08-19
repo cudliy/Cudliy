@@ -595,7 +595,7 @@ const Waitlist = () => {
 
           {/* LIY Text - Bottom Right */}
           <div 
-            className={`absolute top-8 left-8 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            className={`absolute bottom-8 right-8 transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
           >
             <div 
               className="font-bold select-none"

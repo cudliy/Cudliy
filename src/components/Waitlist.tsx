@@ -221,7 +221,7 @@ const Waitlist = () => {
               src="/download.png"
               alt="Cudliy logo"
               className="mx-auto mb-2"
-              style={{ height: 'clamp(1.5rem, 2.2vw, 1.875rem)', width: 'auto' }}
+              style={{ height: 'clamp(2.75rem, 7vw, 4.5rem)', width: 'auto' }}
             />
             <h2 className="text-xl sm:text-2xl font-abril font-bold text-black mb-2" style={{ fontFamily: '"Abril Fatface", serif' }}>
               {selectedRole === "designer" ? "Where Vibe Designers Meet Makers" : "Join the Maker Economy"}

@@ -7,11 +7,11 @@ import { useToast } from "@/hooks/use-toast";
 const Waitlist = () => {
   const [selectedRole, setSelectedRole] = useState<"designer" | "maker">("designer");
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     email: "",
     experience: "",
-    productionStyle: ""
+    production_style: ""
   });
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -87,7 +87,7 @@ const Waitlist = () => {
     setIsLoading(true);
     
     try {
-      if (!formData.firstName.trim()) {
+      if (!formData.first_name.trim()) {
         toast({
           title: "Error",
           description: "Please enter your first name",
@@ -96,7 +96,7 @@ const Waitlist = () => {
         return;
       }
 
-      if (!formData.lastName.trim()) {
+      if (!formData.last_name.trim()) {
         toast({
           title: "Error",
           description: "Please enter your last name",
@@ -114,8 +114,6 @@ const Waitlist = () => {
         return;
       }
 
-      // Simulate API call for demo - In real implementation, this would be:
-      
       // Check if email already exists for this role
       const { data: existingUser, error: checkError } = await supabase
         .from('waitlist')
@@ -144,15 +142,16 @@ const Waitlist = () => {
         return;
       }
 
-      // Insert new waitlist entry with combined name
+      // Insert new waitlist entry with separate first and last name
       const { error: insertError } = await supabase
         .from('waitlist')
         .insert({
-          name: `${formData.firstName.trim()} ${formData.lastName.trim()}`,
+          first_name: formData.first_name.trim(),
+          last_name: formData.last_name.trim(),
           email: formData.email,
           role: selectedRole,
           experience: selectedRole === "designer" ? formData.experience : null,
-          production_style: selectedRole === "maker" ? formData.productionStyle : null
+          production_style: selectedRole === "maker" ? formData.production_style : null
         });
 
       if (insertError) {
@@ -173,7 +172,7 @@ const Waitlist = () => {
       });
 
       // Reset form
-      setFormData({ firstName: "", lastName: "", email: "", experience: "", productionStyle: "" });
+      setFormData({ first_name: "", last_name: "", email: "", experience: "", production_style: "" });
 
     } catch (error) {
       console.error("Unexpected error:", error);
@@ -193,7 +192,7 @@ const Waitlist = () => {
     setFormData(prev => ({
       ...prev,
       experience: "",
-      productionStyle: ""
+      production_style: ""
     }));
     setShowDesignerDropdown(false);
     setShowMakerDropdown(false);
@@ -204,7 +203,7 @@ const Waitlist = () => {
       handleInputChange("experience", value);
       setShowDesignerDropdown(false);
     } else {
-      handleInputChange("productionStyle", value);
+      handleInputChange("production_style", value);
       setShowMakerDropdown(false);
     }
   };
@@ -257,8 +256,8 @@ const Waitlist = () => {
             <Input
               type="text"
               placeholder="First Name"
-              value={formData.firstName}
-              onChange={(e) => handleInputChange("firstName", e.target.value)}
+              value={formData.first_name}
+              onChange={(e) => handleInputChange("first_name", e.target.value)}
               className="border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent"
               style={{ 
                 width: '100%', 
@@ -276,8 +275,8 @@ const Waitlist = () => {
             <Input
               type="text"
               placeholder="Last Name"
-              value={formData.lastName}
-              onChange={(e) => handleInputChange("lastName", e.target.value)}
+              value={formData.last_name}
+              onChange={(e) => handleInputChange("last_name", e.target.value)}
               className="border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent"
               style={{ 
                 width: '100%', 
@@ -427,8 +426,8 @@ const Waitlist = () => {
                     boxSizing: 'border-box'
                   }}
                 >
-                  <span className={formData.productionStyle ? "text-black" : "text-gray-500"}>
-                    {formData.productionStyle || "Production Style"}
+                  <span className={formData.production_style ? "text-black" : "text-gray-500"}>
+                    {formData.production_style || "Production Style"}
                   </span>
                   <span className="float-right">▼</span>
                 </button>

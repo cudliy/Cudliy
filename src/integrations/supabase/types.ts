@@ -18,7 +18,8 @@ export type Database = {
         Row: {
           created_at: string
           email: string
-          name: string
+          first_name: string
+          last_name: string
           id: string
           role: string
           experience: string | null
@@ -27,7 +28,8 @@ export type Database = {
         Insert: {
           created_at?: string
           email: string
-          name: string
+          first_name: string
+          last_name: string
           id?: string
           role: string
           experience?: string | null
@@ -36,7 +38,8 @@ export type Database = {
         Update: {
           created_at?: string
           email?: string
-          name?: string
+          first_name?: string
+          last_name?: string
           id?: string
           role?: string
           experience?: string | null

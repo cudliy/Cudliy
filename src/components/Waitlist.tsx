@@ -217,15 +217,19 @@ const Waitlist = () => {
       <div className="w-full lg:w-1/2 bg-white flex items-center justify-center px-4 sm:px-8 py-8 sm:py-12">
         <div className={`w-full max-w-lg transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <div className={`text-center mb-6 sm:mb-8 transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-            <h1 className="text-2xl sm:text-3xl font-abril font-bold text-black mb-2">Cudliy.</h1>
-            <h2 className="text-xl sm:text-2xl font-abril font-bold text-black mb-2">
+            <h1 className="text-2xl sm:text-3xl font-abril font-bold text-black mb-2" style={{ fontFamily: '"Abril Fatface", serif' }}>Cudliy.</h1>
+            <h2 className="text-xl sm:text-2xl font-abril font-bold text-black mb-2" style={{ fontFamily: '"Abril Fatface", serif' }}>
               {selectedRole === "designer" ? "Where Vibe Designers Meet Makers" : "Join the Maker Economy"}
             </h2>
-            <p className="text-gray-600 font-manrope text-sm sm:text-base">Your imagination deserves to become real.</p>
+            <p className="text-gray-600 font-manrope text-sm sm:text-base">
+              {selectedRole === "designer"
+                ? "Your imagination deserves to become real."
+                : "Behind every designer’s creation is a maker like you who turns this idea into something they can hold. your craft gets paid what it’s worth."}
+            </p>
           </div>
 
           <div 
-            className={`space-y-4 sm:space-y-6 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+            className={`space-y-6 sm:space-y-8 md:space-y-10 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
             onSubmit={handleSubmit}
           >
             {/* Role Selector */}
@@ -266,6 +270,7 @@ const Waitlist = () => {
                 padding: '14px 20px',
                 borderRadius: '25px',
                 border: '0.5px solid #000000',
+                background: '#FFFFFF',
                 boxSizing: 'border-box'
               }}
               required
@@ -285,6 +290,7 @@ const Waitlist = () => {
                 padding: '14px 20px',
                 borderRadius: '25px',
                 border: '0.5px solid #000000',
+                background: '#FFFFFF',
                 boxSizing: 'border-box'
               }}
               required
@@ -304,6 +310,7 @@ const Waitlist = () => {
                 padding: '14px 20px',
                 borderRadius: '25px',
                 border: '0.5px solid #000000',
+                background: '#FFFFFF',
                 boxSizing: 'border-box'
               }}
               required
@@ -511,7 +518,7 @@ const Waitlist = () => {
             )}
 
             {/* Submit Button */}
-            <div className="flex justify-center my-8">
+            <div className="flex justify-center">
               <Button
                 type="button"
                 onClick={handleSubmit}

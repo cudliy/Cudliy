@@ -232,6 +232,7 @@ const Waitlist = () => {
             className={`space-y-10 sm:space-y-12 md:space-y-16 lg:space-y-20 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
             onSubmit={handleSubmit}
           >
+            <div className="space-y-4 sm:space-y-6">
             {/* Role Selector */}
             <div className="flex bg-gray-100 rounded-lg p-1 mx-auto" style={{ width: '138px', height: '39px' }}>
               <button
@@ -516,6 +517,8 @@ const Waitlist = () => {
                 </div>
               </div>
             )}
+
+            </div>
 
             {/* Submit Button */}
             <div className="flex justify-center">

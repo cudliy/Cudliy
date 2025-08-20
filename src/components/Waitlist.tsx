@@ -229,10 +229,10 @@ const Waitlist = () => {
           </div>
 
           <div 
-            className={`space-y-10 sm:space-y-12 md:space-y-16 lg:space-y-20 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+            className={`space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
             onSubmit={handleSubmit}
           >
-            <div className="space-y-4 sm:space-y-6">
+            <div className="space-y-3 sm:space-y-4">
             {/* Role Selector */}
             <div className="flex bg-gray-100 rounded-lg p-1 mx-auto" style={{ width: '138px', height: '39px' }}>
               <button
@@ -565,7 +565,7 @@ const Waitlist = () => {
         }}
       >
         {/* Central Image - Background layer */}
-        <div className={`absolute inset-0 flex items-center justify-center transform transition-all duration-1000 delay-300 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
+        <div className={`absolute inset-0 flex items-center justify-center transform transition-all duration-1000 delay-300 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`} style={{ zIndex: 1 }}>
           <img
             src={selectedRole === "designer" ? "/image 2.png" : "/image 1.png"}
             alt={selectedRole === "designer" ? "Designer Background" : "Maker Background"}
@@ -582,7 +582,7 @@ const Waitlist = () => {
         </div>
 
         {/* Text Overlay Layer - This will be on top */}
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
           {/* CUD Text - Top Left */}
           <div 
             className={`absolute top-8 left-8 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}

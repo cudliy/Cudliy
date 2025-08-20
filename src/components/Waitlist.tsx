@@ -217,7 +217,12 @@ const Waitlist = () => {
       <div className="w-full lg:w-1/2 bg-white flex items-center justify-center px-4 sm:px-8 py-8 sm:py-12">
         <div className={`w-full max-w-lg transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <div className={`text-center mb-6 sm:mb-8 transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-            <h1 className="text-2xl sm:text-3xl font-abril font-bold text-black mb-2" style={{ fontFamily: '"Abril Fatface", serif' }}>Cudliy.</h1>
+            <img
+              src="/download.png"
+              alt="Cudliy logo"
+              className="mx-auto mb-2"
+              style={{ height: 'clamp(1.5rem, 2.2vw, 1.875rem)', width: 'auto' }}
+            />
             <h2 className="text-xl sm:text-2xl font-abril font-bold text-black mb-2" style={{ fontFamily: '"Abril Fatface", serif' }}>
               {selectedRole === "designer" ? "Where Vibe Designers Meet Makers" : "Join the Maker Economy"}
             </h2>

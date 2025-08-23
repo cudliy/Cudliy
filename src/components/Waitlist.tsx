@@ -221,17 +221,17 @@ const Waitlist = () => {
            }}>
         <div className={`w-full max-w-lg transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} 
              style={{overflow: 'hidden'}}>
-          <div className={`text-center mb-0 transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+          <div className={`text-center mb-1 transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             <img
               src="/download.png"
               alt="Cudliy logo"
               className="mx-auto mb-0"
               style={{ height: 'clamp(11.6rem, 29.4vw, 18.9rem)', width: 'auto' }}
             />
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-abril font-bold text-black mb-0" style={{ fontFamily: '"Abril Fatface", serif' }}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-abril font-bold text-black mb-1" style={{ fontFamily: '"Abril Fatface", serif' }}>
               {selectedRole === "designer" ? "Where Vibe Designers Meet Makers" : "Join the Maker Economy"}
             </h2>
-            <p className="text-gray-600 font-manrope text-sm sm:text-base mb-0">
+            <p className="text-gray-600 font-manrope text-sm sm:text-base mb-1">
               {selectedRole === "designer"
                 ? "Your imagination deserves to become real."
                 : "Behind every designer's creation is a maker like you who turns this idea into something they can hold. your craft gets paid what it's worth."}
@@ -239,11 +239,11 @@ const Waitlist = () => {
           </div>
 
           <div 
-            className={`space-y-1 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+            className={`space-y-2 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
             onSubmit={handleSubmit}
             style={{overflow: 'hidden'}}
           >
-            <div className="space-y-1 sm:space-y-2" style={{overflow: 'hidden'}}>
+            <div className="space-y-2 sm:space-y-3" style={{overflow: 'hidden'}}>
             {/* Role Selector */}
             <div className="flex bg-gray-100 rounded-lg p-1 mx-auto" style={{ width: '138px', height: '39px' }}>
               <button
@@ -541,7 +541,7 @@ const Waitlist = () => {
             </div>
 
             {/* Submit Button */}
-            <div className="flex justify-center mt-1">
+            <div className="flex justify-center mt-2">
               <Button
                 type="button"
                 onClick={handleSubmit}
@@ -558,12 +558,12 @@ const Waitlist = () => {
             </div>
 
             {/* Free Early Access Text */}
-            <div className="text-center mt-1">
+            <div className="text-center mt-3">
               <p className="text-gray-500 text-sm font-manrope">Free Early Access</p>
             </div>
 
             {/* Countdown Timer - Much further away */}
-            <div className="text-center mt-8">
+            <div className="text-center mt-32">
               <div className="text-xl sm:text-2xl font-bold text-black mb-2">
                 {formatNumber(countdown.days)} : {formatNumber(countdown.hours)} : {formatNumber(countdown.minutes)} : {formatNumber(countdown.seconds)}
               </div>

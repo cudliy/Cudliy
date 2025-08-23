@@ -234,7 +234,7 @@ const Waitlist = () => {
           </div>
 
           <div 
-            className={`space-y-4 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+            className={`space-y-3 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
             onSubmit={handleSubmit}
           >
             <div className="space-y-3 sm:space-y-4">
@@ -543,12 +543,12 @@ const Waitlist = () => {
             </div>
 
             {/* Free Early Access Text - Moved closer to button */}
-            <div className="text-center -mt-2">
+            <div className="text-center mt-6">
               <p className="text-gray-500 text-sm font-manrope">Free Early Access</p>
             </div>
 
-            {/* Countdown Timer */}
-            <div className="text-center">
+            {/* Countdown Timer - Increased spacing */}
+            <div className="text-center mt-8">
               <div className="text-xl sm:text-2xl font-bold text-black mb-2">
                 {formatNumber(countdown.days)} : {formatNumber(countdown.hours)} : {formatNumber(countdown.minutes)} : {formatNumber(countdown.seconds)}
               </div>
@@ -586,14 +586,14 @@ const Waitlist = () => {
           />
         </div>
 
-        {/* Text Overlay Layer - CUD and LIY positioned relative to image */}
+        {/* Text Overlay Layer - CUD and LIY positioned at diagonal corners */}
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
-          {/* CUD Text - Positioned relative to image bounds */}
+          {/* CUD Text - Top Left Corner */}
           <div 
             className={`absolute transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
             style={{
-              left: 'max(2rem, calc(50% - min(45vw, 450px)))',
-              top: 'max(2rem, calc(50% - min(45vh, 300px)))',
+              left: '1rem',
+              top: '1rem',
             }}
           >
             <div 
@@ -611,12 +611,12 @@ const Waitlist = () => {
             </div>
           </div>
 
-          {/* LIY Text - Positioned relative to image bounds */}
+          {/* LIY Text - Bottom Right Corner */}
           <div 
             className={`absolute transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
             style={{
-              right: 'max(2rem, calc(50% - min(45vw, 450px)))',
-              bottom: 'max(2rem, calc(50% - min(45vh, 300px)))',
+              right: '1rem',
+              bottom: '1rem',
             }}
           >
             <div 

@@ -212,13 +212,15 @@ const Waitlist = () => {
   const formatNumber = (num: number) => num.toString().padStart(2, '0');
 
   return (
-    <div className="min-h-screen max-h-screen flex overflow-hidden">
+    <div className="min-h-screen max-h-screen flex" style={{overflow: 'hidden'}}>
       {/* Left Section - Waitlist Form */}
-      <div className="w-full lg:w-1/2 lg:bg-white flex items-center justify-center px-4 sm:px-8 py-4 overflow-y-auto" 
+      <div className="w-full lg:w-1/2 lg:bg-white flex items-center justify-center px-4 sm:px-8 py-4" 
            style={{
-             background: window.innerWidth < 1024 ? 'linear-gradient(to bottom, #ffffff 0%, #faf9f9 15%, #f5f0f1 30%, #f0e6e8 45%, #ebdcdf 60%, #e6d2d6 75%, #e1c8cd 90%, #dcbec4 100%)' : 'white'
+             background: window.innerWidth < 1024 ? 'radial-gradient(ellipse at top, #e1c8cd 0%, #e6d2d6 15%, #ebdcdf 30%, #f0e6e8 45%, #f5f0f1 60%, #faf9f9 80%, #ffffff 100%)' : 'white',
+             overflow: 'hidden'
            }}>
-        <div className={`w-full max-w-lg transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+        <div className={`w-full max-w-lg transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} 
+             style={{overflow: 'hidden'}}>
           <div className={`text-center mb-2 transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             <img
               src="/download.png"
@@ -239,8 +241,9 @@ const Waitlist = () => {
           <div 
             className={`space-y-3 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
             onSubmit={handleSubmit}
+            style={{overflow: 'hidden'}}
           >
-            <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-3 sm:space-y-4" style={{overflow: 'hidden'}}>
             {/* Role Selector */}
             <div className="flex bg-gray-100 rounded-lg p-1 mx-auto" style={{ width: '138px', height: '39px' }}>
               <button
@@ -280,7 +283,8 @@ const Waitlist = () => {
                 borderRadius: '25px',
                 border: '0.5px solid #000000',
                 background: '#FFFFFF',
-                boxSizing: 'border-box'
+                boxSizing: 'border-box',
+                overflow: 'hidden'
               }}
               required
             />
@@ -300,7 +304,8 @@ const Waitlist = () => {
                 borderRadius: '25px',
                 border: '0.5px solid #000000',
                 background: '#FFFFFF',
-                boxSizing: 'border-box'
+                boxSizing: 'border-box',
+                overflow: 'hidden'
               }}
               required
             />
@@ -320,7 +325,8 @@ const Waitlist = () => {
                 borderRadius: '25px',
                 border: '0.5px solid #000000',
                 background: '#FFFFFF',
-                boxSizing: 'border-box'
+                boxSizing: 'border-box',
+                overflow: 'hidden'
               }}
               required
             />
@@ -328,7 +334,7 @@ const Waitlist = () => {
             {/* Dynamic Dropdown based on Role */}
             {selectedRole === "designer" ? (
               /* 3D Experience Dropdown for Designer */
-              <div className="relative" ref={designerDropdownRef}>
+              <div className="relative" ref={designerDropdownRef} style={{overflow: 'visible'}}>
                 <button
                   type="button"
                   onClick={() => setShowDesignerDropdown(!showDesignerDropdown)}
@@ -340,7 +346,8 @@ const Waitlist = () => {
                     padding: '14px 20px',
                     borderRadius: '25px',
                     border: '0.5px solid #000000',
-                    boxSizing: 'border-box'
+                    boxSizing: 'border-box',
+                    overflow: 'hidden'
                   }}
                 >
                   <span className={formData.experience ? "text-black" : "text-gray-500"}>
@@ -389,7 +396,8 @@ const Waitlist = () => {
                     flexDirection: 'column',
                     gap: '12px',
                     width: '100%',
-                    height: 'auto'
+                    height: 'auto',
+                    overflow: 'hidden'
                   }}>
                     {["No Experience", "Basic CAD Knowledge", "Advanced Designer"].map((option, index) => (
                       <button
@@ -416,7 +424,8 @@ const Waitlist = () => {
                           color: '#2C2E3D',
                           background: 'transparent',
                           cursor: 'pointer',
-                          textAlign: 'left'
+                          textAlign: 'left',
+                          overflow: 'hidden'
                         }}
                       >
                         {option}
@@ -427,7 +436,7 @@ const Waitlist = () => {
               </div>
             ) : (
               /* Production Style Dropdown for Maker */
-              <div className="relative" ref={makerDropdownRef}>
+              <div className="relative" ref={makerDropdownRef} style={{overflow: 'visible'}}>
                 <button
                   type="button"
                   onClick={() => setShowMakerDropdown(!showMakerDropdown)}
@@ -439,7 +448,8 @@ const Waitlist = () => {
                     padding: '14px 20px',
                     borderRadius: '25px',
                     border: '0.5px solid #000000',
-                    boxSizing: 'border-box'
+                    boxSizing: 'border-box',
+                    overflow: 'hidden'
                   }}
                 >
                   <span className={formData.production_style ? "text-black" : "text-gray-500"}>
@@ -488,7 +498,8 @@ const Waitlist = () => {
                     flexDirection: 'column',
                     gap: '12px',
                     width: '100%',
-                    height: 'auto'
+                    height: 'auto',
+                    overflow: 'hidden'
                   }}>
                     {["Digital Production", "Handcrafted Production", "Hybrid"].map((option, index) => (
                       <button
@@ -515,7 +526,8 @@ const Waitlist = () => {
                           color: '#2C2E3D',
                           background: 'transparent',
                           cursor: 'pointer',
-                          textAlign: 'left'
+                          textAlign: 'left',
+                          overflow: 'hidden'
                         }}
                       >
                         {option}
@@ -551,7 +563,7 @@ const Waitlist = () => {
             </div>
 
             {/* Countdown Timer - Much further away */}
-            <div className="text-center mt-16">
+            <div className="text-center mt-32">
               <div className="text-xl sm:text-2xl font-bold text-black mb-2">
                 {formatNumber(countdown.days)} : {formatNumber(countdown.hours)} : {formatNumber(countdown.minutes)} : {formatNumber(countdown.seconds)}
               </div>
@@ -565,11 +577,12 @@ const Waitlist = () => {
 
       {/* Right Section - Visual Branding */}
       <div 
-        className={`hidden lg:flex lg:w-1/2 relative overflow-hidden transform transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
+        className={`hidden lg:flex lg:w-1/2 relative transform transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
         style={{ 
           backgroundColor: '#FBB871',
           borderTopLeftRadius: '40px',
-          borderBottomLeftRadius: '40px'
+          borderBottomLeftRadius: '40px',
+          overflow: 'hidden'
         }}
       >
         {/* Central Image - Background layer */}
@@ -581,8 +594,8 @@ const Waitlist = () => {
             style={{ 
               width: 'min(90vw, 900px)', 
               height: 'min(90vh, 600px)', 
-              minWidth: '500px',
-              minHeight: '350px',
+              minWidth: '400px',
+              minHeight: '300px',
               maxWidth: '1000px',
               maxHeight: '700px'
             }}
@@ -591,18 +604,18 @@ const Waitlist = () => {
 
         {/* Text Overlay Layer - CUD and LIY positioned precisely on image */}
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
-          {/* CUD Text - Top Left of image area */}
+          {/* CUD Text - Top Left of image area - Fixed positioning for all desktop sizes */}
           <div 
             className={`absolute transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
             style={{
-              left: 'calc(50% - min(45vw, 450px) + 1rem)',
-              top: 'calc(50% - min(45vh, 300px) + 1rem)',
+              left: 'clamp(2rem, 12%, 8rem)',
+              top: 'clamp(3rem, 15%, 12rem)',
             }}
           >
             <div 
               className="font-bold select-none"
               style={{ 
-                fontSize: 'clamp(3rem, 8vw, 10rem)',
+                fontSize: 'clamp(3rem, 6vw, 8rem)',
                 fontFamily: 'Manrope',
                 color: 'transparent',
                 WebkitTextStroke: '0.5px rgba(255, 255, 255, 0.58)',
@@ -614,18 +627,18 @@ const Waitlist = () => {
             </div>
           </div>
 
-          {/* LIY Text - Bottom Right of image area */}
+          {/* LIY Text - Bottom Right of image area - Fixed positioning for all desktop sizes */}
           <div 
             className={`absolute transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
             style={{
-              right: 'calc(50% - min(45vw, 450px) + 1rem)',
-              bottom: 'calc(50% - min(45vh, 300px) + 1rem)',
+              right: 'clamp(2rem, 12%, 8rem)',
+              bottom: 'clamp(3rem, 15%, 12rem)',
             }}
           >
             <div 
               className="font-bold select-none"
               style={{ 
-                fontSize: 'clamp(3rem, 8vw, 10rem)',
+                fontSize: 'clamp(3rem, 6vw, 8rem)',
                 fontFamily: 'Manrope',
                 color: 'transparent',
                 WebkitTextStroke: '0.5px rgba(255, 255, 255, 0.58)',

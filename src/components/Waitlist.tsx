@@ -214,7 +214,7 @@ const Waitlist = () => {
   return (
     <div className="min-h-screen max-h-screen flex" style={{overflow: 'hidden'}}>
       {/* Left Section - Waitlist Form */}
-      <div className="w-full lg:w-1/2 lg:bg-white flex items-center justify-center px-4 sm:px-8 py-4" 
+      <div className="w-full lg:w-1/2 lg:bg-white flex items-center justify-center px-4 sm:px-8 py-1" 
            style={{
              background: window.innerWidth < 1024 ? 'radial-gradient(ellipse at top, #e1c8cd 0%, #e6d2d6 15%, #ebdcdf 30%, #f0e6e8 45%, #f5f0f1 60%, #faf9f9 80%, #ffffff 100%)' : 'white',
              overflow: 'hidden'

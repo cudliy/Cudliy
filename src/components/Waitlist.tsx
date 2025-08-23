@@ -216,25 +216,25 @@ const Waitlist = () => {
       {/* Left Section - Waitlist Form */}
       <div className="w-full lg:w-1/2 bg-white flex items-center justify-center px-4 sm:px-8 py-8 sm:py-12">
         <div className={`w-full max-w-lg transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <div className={`text-center mb-6 sm:mb-8 transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+          <div className={`text-center mb-2 transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             <img
               src="/download.png"
               alt="Cudliy logo"
               className="mx-auto mb-1"
               style={{ height: 'clamp(11.6rem, 29.4vw, 18.9rem)', width: 'auto' }}
             />
-            <h2 className="text-xl sm:text-2xl font-abril font-bold text-black mb-2" style={{ fontFamily: '"Abril Fatface", serif' }}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-abril font-bold text-black mb-2" style={{ fontFamily: '"Abril Fatface", serif' }}>
               {selectedRole === "designer" ? "Where Vibe Designers Meet Makers" : "Join the Maker Economy"}
             </h2>
             <p className="text-gray-600 font-manrope text-sm sm:text-base">
               {selectedRole === "designer"
                 ? "Your imagination deserves to become real."
-                : "Behind every designer’s creation is a maker like you who turns this idea into something they can hold. your craft gets paid what it’s worth."}
+                : "Behind every designer's creation is a maker like you who turns this idea into something they can hold. your craft gets paid what it's worth."}
             </p>
           </div>
 
           <div 
-            className={`space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+            className={`space-y-4 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
             onSubmit={handleSubmit}
           >
             <div className="space-y-3 sm:space-y-4">
@@ -542,8 +542,8 @@ const Waitlist = () => {
               </Button>
             </div>
 
-            {/* Free Early Access Text */}
-            <div className="text-center">
+            {/* Free Early Access Text - Moved closer to button */}
+            <div className="text-center -mt-2">
               <p className="text-gray-500 text-sm font-manrope">Free Early Access</p>
             </div>
 
@@ -586,19 +586,23 @@ const Waitlist = () => {
           />
         </div>
 
-        {/* Text Overlay Layer - This will be on top */}
+        {/* Text Overlay Layer - CUD and LIY positioned relative to image */}
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
-          {/* CUD Text - Top Left */}
+          {/* CUD Text - Positioned relative to image bounds */}
           <div 
-            className={`absolute top-8 left-8 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            className={`absolute transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            style={{
+              left: 'max(2rem, calc(50% - min(45vw, 450px)))',
+              top: 'max(2rem, calc(50% - min(45vh, 300px)))',
+            }}
           >
             <div 
               className="font-bold select-none"
               style={{ 
-                fontSize: 'clamp(3rem, 8vw, 8rem)',
+                fontSize: 'clamp(4rem, 12vw, 12rem)',
                 fontFamily: 'Manrope',
                 color: 'transparent',
-                WebkitTextStroke: '0.5px rgba(255, 255, 255, 0.58)',
+                WebkitTextStroke: '0.8px rgba(255, 255, 255, 0.58)',
                 background: 'transparent',
                 lineHeight: 0.8
               } as React.CSSProperties}
@@ -607,17 +611,21 @@ const Waitlist = () => {
             </div>
           </div>
 
-          {/* LIY Text - Bottom Right */}
+          {/* LIY Text - Positioned relative to image bounds */}
           <div 
-            className={`absolute bottom-8 right-8 transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            className={`absolute transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            style={{
+              right: 'max(2rem, calc(50% - min(45vw, 450px)))',
+              bottom: 'max(2rem, calc(50% - min(45vh, 300px)))',
+            }}
           >
             <div 
               className="font-bold select-none"
               style={{ 
-                fontSize: 'clamp(3rem, 8vw, 8rem)',
+                fontSize: 'clamp(4rem, 12vw, 12rem)',
                 fontFamily: 'Manrope',
                 color: 'transparent',
-                WebkitTextStroke: '0.5px rgba(255, 255, 255, 0.58)',
+                WebkitTextStroke: '0.8px rgba(255, 255, 255, 0.58)',
                 background: 'transparent',
                 lineHeight: 0.8
               } as React.CSSProperties}

@@ -115,12 +115,28 @@ const Waitlist = () => {
       }
 
       // Check if email already exists for this role
-      const { data: existingUser, error: checkError } = await supabase
-        .from('waitlist')
-        .select('email, role')
-        .eq('email', formData.email)
-        .eq('role', selectedRole)
-        .single();
+      let existingUser = null;
+      let checkError = null;
+      
+      try {
+        const result = await supabase
+          .from('waitlist')
+          .select('email, role')
+          .eq('email', formData.email)
+          .eq('role', selectedRole)
+          .single();
+        
+        existingUser = result.data;
+        checkError = result.error;
+      } catch (error) {
+        console.error("Network error checking existing user:", error);
+        toast({
+          title: "Connection Error",
+          description: "Unable to connect to server. Please check your internet connection and try again.",
+          variant: "destructive",
+        });
+        return;
+      }
 
       if (checkError && checkError.code !== 'PGRST116') {
         // PGRST116 is "not found" error, which is expected
@@ -143,16 +159,30 @@ const Waitlist = () => {
       }
 
       // Insert new waitlist entry with separate first and last name
-      const { error: insertError } = await supabase
-        .from('waitlist')
-        .insert({
-          first_name: formData.first_name.trim(),
-          last_name: formData.last_name.trim(),
-          email: formData.email,
-          role: selectedRole,
-          experience: selectedRole === "designer" ? formData.experience : null,
-          production_style: selectedRole === "maker" ? formData.production_style : null
+      let insertError = null;
+      
+      try {
+        const result = await supabase
+          .from('waitlist')
+          .insert({
+            first_name: formData.first_name.trim(),
+            last_name: formData.last_name.trim(),
+            email: formData.email,
+            role: selectedRole,
+            experience: selectedRole === "designer" ? formData.experience : null,
+            production_style: selectedRole === "maker" ? formData.production_style : null
+          });
+        
+        insertError = result.error;
+      } catch (error) {
+        console.error("Network error inserting waitlist entry:", error);
+        toast({
+          title: "Connection Error",
+          description: "Unable to connect to server. Please check your internet connection and try again.",
+          variant: "destructive",
         });
+        return;
+      }
 
       if (insertError) {
         console.error("Error inserting waitlist entry:", insertError);

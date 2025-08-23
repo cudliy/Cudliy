@@ -545,13 +545,13 @@ const Waitlist = () => {
               </Button>
             </div>
 
-            {/* Free Early Access Text - Moved away from button */}
-            <div className="text-center mt-4">
+            {/* Free Early Access Text */}
+            <div className="text-center mt-6">
               <p className="text-gray-500 text-sm font-manrope">Free Early Access</p>
             </div>
 
-            {/* Countdown Timer - Further away */}
-            <div className="text-center mt-6">
+            {/* Countdown Timer - Much further away */}
+            <div className="text-center mt-16">
               <div className="text-xl sm:text-2xl font-bold text-black mb-2">
                 {formatNumber(countdown.days)} : {formatNumber(countdown.hours)} : {formatNumber(countdown.minutes)} : {formatNumber(countdown.seconds)}
               </div>
@@ -573,7 +573,7 @@ const Waitlist = () => {
         }}
       >
         {/* Central Image - Background layer */}
-        <div className={`absolute inset-0 flex items-center justify-center transform transition-all duration-1000 delay-300 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`} style={{ zIndex: 1 }}>
+        <div className={`absolute inset-0 flex items-center justify-center transform transition-all duration-1000 delay-300 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`} style={{ zIndex: 1 }} id="central-image">
           <img
             src={selectedRole === "designer" ? "/image 2.png" : "/image 1.png"}
             alt={selectedRole === "designer" ? "Designer Background" : "Maker Background"}
@@ -589,20 +589,20 @@ const Waitlist = () => {
           />
         </div>
 
-        {/* Text Overlay Layer - CUD and LIY positioned at edge corners but within bounds */}
+        {/* Text Overlay Layer - CUD and LIY positioned precisely on image */}
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
-          {/* CUD Text - Top Left Corner, within image bounds */}
+          {/* CUD Text - Top Left of image area */}
           <div 
             className={`absolute transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
             style={{
-              left: '0.5rem',
-              top: '0.5rem',
+              left: 'calc(50% - min(45vw, 450px) + 1rem)',
+              top: 'calc(50% - min(45vh, 300px) + 1rem)',
             }}
           >
             <div 
               className="font-bold select-none"
               style={{ 
-                fontSize: 'clamp(4rem, 12vw, 12rem)',
+                fontSize: 'clamp(3rem, 8vw, 10rem)',
                 fontFamily: 'Manrope',
                 color: 'transparent',
                 WebkitTextStroke: '0.5px rgba(255, 255, 255, 0.58)',
@@ -614,18 +614,18 @@ const Waitlist = () => {
             </div>
           </div>
 
-          {/* LIY Text - Bottom Right Corner, within image bounds */}
+          {/* LIY Text - Bottom Right of image area */}
           <div 
             className={`absolute transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
             style={{
-              right: '0.5rem',
-              bottom: '0.5rem',
+              right: 'calc(50% - min(45vw, 450px) + 1rem)',
+              bottom: 'calc(50% - min(45vh, 300px) + 1rem)',
             }}
           >
             <div 
               className="font-bold select-none"
               style={{ 
-                fontSize: 'clamp(4rem, 12vw, 12rem)',
+                fontSize: 'clamp(3rem, 8vw, 10rem)',
                 fontFamily: 'Manrope',
                 color: 'transparent',
                 WebkitTextStroke: '0.5px rgba(255, 255, 255, 0.58)',

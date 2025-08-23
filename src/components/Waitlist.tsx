@@ -212,27 +212,27 @@ const Waitlist = () => {
   const formatNumber = (num: number) => num.toString().padStart(2, '0');
 
   return (
-    <div className="min-h-screen max-h-screen flex" style={{overflow: 'hidden'}}>
+    <div className="min-h-screen flex flex-col lg:flex-row" style={{overflow: 'auto'}}>
       {/* Left Section - Waitlist Form */}
-      <div className="w-full lg:w-1/2 lg:bg-white flex items-center justify-center px-4 sm:px-8 py-1" 
+      <div className="w-full lg:w-1/2 lg:bg-white flex items-center justify-center px-4 sm:px-8 py-8 lg:py-1" 
            style={{
              background: window.innerWidth < 1024 ? 'radial-gradient(ellipse at top, #e1c8cd 0%, #e6d2d6 15%, #ebdcdf 30%, #f0e6e8 45%, #f5f0f1 60%, #faf9f9 80%, #ffffff 100%)' : 'white',
-             overflow: 'hidden'
+             minHeight: window.innerWidth < 1024 ? '100vh' : 'auto'
            }}>
         <div className={`w-full max-w-lg transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} 
-             style={{overflow: 'hidden'}}>
+             style={{overflow: 'visible'}}>
           {/* Logo and Header - Brought closer */}
-          <div className={`text-center transform transition-all -mt-32 duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+          <div className={`text-center transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             <img
               src="/download.png"
               alt="Cudliy logo"
-              className="mx-auto mb-0 -mt-12"
-              style={{ height: 'clamp(11.6rem, 29.4vw, 18.9rem)', width: 'auto' }}
+              className="mx-auto mb-4 lg:mb-0 lg:-mt-12"
+              style={{ height: 'clamp(8rem, 20vw, 18.9rem)', width: 'auto' }}
             />
-            <h2 className="text-2xl sm:text-3xl md:text-4xl -mt-24 font-abril font-bold text-black mb-2" style={{ fontFamily: '"Abril Fatface", serif' }}>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-abril font-bold text-black mb-3 lg:mb-2 lg:-mt-20" style={{ fontFamily: '"Abril Fatface", serif' }}>
               {selectedRole === "designer" ? "Where Vibe Designers Meet Makers" : "Join the Maker Economy"}
             </h2>
-            <p className="text-gray-600 font-manrope text-sm sm:text-base mb-4">
+            <p className="text-gray-600 font-manrope text-sm sm:text-base mb-6 lg:mb-4 px-4 lg:px-0">
               {selectedRole === "designer"
                 ? "Your imagination deserves to become real."
                 : "Behind every designer's creation is a maker like you who turns this idea into something they can hold. your craft gets paid what it's worth."}
@@ -241,11 +241,11 @@ const Waitlist = () => {
 
           {/* Form Section - Brought much closer to header */}
           <div 
-            className={`space-y-1 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+            className={`space-y-4 lg:space-y-1 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
             onSubmit={handleSubmit}
-            style={{overflow: 'hidden'}}
+            style={{overflow: 'visible'}}
           >
-            <div className="space-y-3 sm:space-y-4" style={{overflow: 'hidden'}}>
+            <div className="space-y-4 lg:space-y-3 sm:space-y-4" style={{overflow: 'visible'}}>
             {/* Role Selector */}
             <div className="flex bg-gray-100 rounded-lg p-1 mx-auto" style={{ width: '138px', height: '39px' }}>
               <button
@@ -565,11 +565,11 @@ const Waitlist = () => {
             </div>
 
             {/* Countdown Timer - Much further away from early access */}
-            <div className="text-center mt-36">
-              <div className="text-xl sm:text-2xl font-bold text-black mt-36 mb-2">
+            <div className="text-center mt-16 lg:mt-36">
+              <div className="text-lg sm:text-xl lg:text-2xl font-bold text-black 2xl:mt-20 mt-8 lg:mt-32 mb-8 lg:mb-14">
                 {formatNumber(countdown.days)} : {formatNumber(countdown.hours)} : {formatNumber(countdown.minutes)} : {formatNumber(countdown.seconds)}
               </div>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm -mt-6 lg:-mt-12 text-gray-600">
                 Get Ready For <span className="text-[#E70A55] font-semibold">October 1st</span>
               </p>
             </div>

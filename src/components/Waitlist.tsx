@@ -212,9 +212,12 @@ const Waitlist = () => {
   const formatNumber = (num: number) => num.toString().padStart(2, '0');
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen max-h-screen flex overflow-hidden">
       {/* Left Section - Waitlist Form */}
-      <div className="w-full lg:w-1/2 bg-white flex items-center justify-center px-4 sm:px-8 py-8 sm:py-12">
+      <div className="w-full lg:w-1/2 lg:bg-white flex items-center justify-center px-4 sm:px-8 py-4 overflow-y-auto" 
+           style={{
+             background: window.innerWidth < 1024 ? 'linear-gradient(to bottom, #ffffff 0%, #faf9f9 15%, #f5f0f1 30%, #f0e6e8 45%, #ebdcdf 60%, #e6d2d6 75%, #e1c8cd 90%, #dcbec4 100%)' : 'white'
+           }}>
         <div className={`w-full max-w-lg transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <div className={`text-center mb-2 transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             <img
@@ -542,13 +545,13 @@ const Waitlist = () => {
               </Button>
             </div>
 
-            {/* Free Early Access Text - Moved closer to button */}
-            <div className="text-center mt-6">
+            {/* Free Early Access Text - Moved away from button */}
+            <div className="text-center mt-4">
               <p className="text-gray-500 text-sm font-manrope">Free Early Access</p>
             </div>
 
-            {/* Countdown Timer - Increased spacing */}
-            <div className="text-center mt-8">
+            {/* Countdown Timer - Further away */}
+            <div className="text-center mt-6">
               <div className="text-xl sm:text-2xl font-bold text-black mb-2">
                 {formatNumber(countdown.days)} : {formatNumber(countdown.hours)} : {formatNumber(countdown.minutes)} : {formatNumber(countdown.seconds)}
               </div>
@@ -586,14 +589,14 @@ const Waitlist = () => {
           />
         </div>
 
-        {/* Text Overlay Layer - CUD and LIY positioned at diagonal corners */}
+        {/* Text Overlay Layer - CUD and LIY positioned at edge corners but within bounds */}
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
-          {/* CUD Text - Top Left Corner */}
+          {/* CUD Text - Top Left Corner, within image bounds */}
           <div 
             className={`absolute transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
             style={{
-              left: '1rem',
-              top: '1rem',
+              left: '0.5rem',
+              top: '0.5rem',
             }}
           >
             <div 
@@ -602,7 +605,7 @@ const Waitlist = () => {
                 fontSize: 'clamp(4rem, 12vw, 12rem)',
                 fontFamily: 'Manrope',
                 color: 'transparent',
-                WebkitTextStroke: '0.8px rgba(255, 255, 255, 0.58)',
+                WebkitTextStroke: '0.5px rgba(255, 255, 255, 0.58)',
                 background: 'transparent',
                 lineHeight: 0.8
               } as React.CSSProperties}
@@ -611,12 +614,12 @@ const Waitlist = () => {
             </div>
           </div>
 
-          {/* LIY Text - Bottom Right Corner */}
+          {/* LIY Text - Bottom Right Corner, within image bounds */}
           <div 
             className={`absolute transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
             style={{
-              right: '1rem',
-              bottom: '1rem',
+              right: '0.5rem',
+              bottom: '0.5rem',
             }}
           >
             <div 
@@ -625,7 +628,7 @@ const Waitlist = () => {
                 fontSize: 'clamp(4rem, 12vw, 12rem)',
                 fontFamily: 'Manrope',
                 color: 'transparent',
-                WebkitTextStroke: '0.8px rgba(255, 255, 255, 0.58)',
+                WebkitTextStroke: '0.5px rgba(255, 255, 255, 0.58)',
                 background: 'transparent',
                 lineHeight: 0.8
               } as React.CSSProperties}

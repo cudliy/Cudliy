@@ -212,59 +212,55 @@ const Waitlist = () => {
   const formatNumber = (num: number) => num.toString().padStart(2, '0');
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row" style={{overflow: 'auto'}}>
+    <div className="h-screen flex flex-col lg:flex-row bg-white overflow-hidden">
       {/* Left Section - Waitlist Form */}
-      <div className="w-full lg:w-1/2 lg:bg-white flex items-center justify-center px-4 sm:px-8 py-8 lg:py-1" 
-           style={{
-             background: window.innerWidth < 1024 ? 'radial-gradient(ellipse at top, #e1c8cd 0%, #e6d2d6 15%, #ebdcdf 30%, #f0e6e8 45%, #f5f0f1 60%, #faf9f9 80%, #ffffff 100%)' : 'white',
-             minHeight: window.innerWidth < 1024 ? '100vh' : 'auto'
-           }}>
-        <div className={`w-full max-w-lg transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} 
-             style={{overflow: 'visible'}}>
-          {/* Logo and Header - Brought closer */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-4 lg:py-8 overflow-y-auto">
+        <div className={`w-full max-w-md lg:max-w-lg xl:max-w-xl transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          {/* Logo and Header */}
           <div className={`text-center transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             <img
               src="/download.png"
               alt="Cudliy logo"
-              className="mx-auto mb-4 lg:mb-0 lg:-mt-12"
-              style={{ height: 'clamp(8rem, 20vw, 18.9rem)', width: 'auto' }}
+              className="mx-auto mb-4"
+              style={{ 
+                width: 'clamp(80px, 20vw, 160px)',
+                height: 'auto',
+                objectFit: 'contain',
+                maxHeight: '120px',
+                aspectRatio: 'auto'
+              }}
             />
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-abril font-bold text-black mb-3 lg:mb-2 lg:-mt-20" style={{ fontFamily: '"Abril Fatface", serif' }}>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-abril font-bold text-black mb-3" style={{ fontFamily: '"Abril Fatface", serif' }}>
               {selectedRole === "designer" ? "Where Vibe Designers Meet Makers" : "Join the Maker Economy"}
             </h2>
-            <p className="text-gray-600 font-manrope text-sm sm:text-base mb-6 lg:mb-4 px-4 lg:px-0">
+            <p className="text-gray-600 font-manrope text-sm sm:text-base mb-6 px-4 lg:px-0">
               {selectedRole === "designer"
                 ? "Your imagination deserves to become real."
                 : "Behind every designer's creation is a maker like you who turns this idea into something they can hold. your craft gets paid what it's worth."}
             </p>
           </div>
 
-          {/* Form Section - Brought much closer to header */}
-          <div 
-            className={`space-y-4 lg:space-y-1 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
-            onSubmit={handleSubmit}
-            style={{overflow: 'visible'}}
-          >
-            <div className="space-y-4 lg:space-y-3 sm:space-y-4" style={{overflow: 'visible'}}>
+                      {/* Form Section */}
+            <div className={`space-y-3 transform transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             {/* Role Selector */}
-            <div className="flex bg-gray-100 rounded-lg p-1 mx-auto" style={{ width: '138px', height: '39px' }}>
+            <div className="flex bg-gray-100 rounded-lg p-1 mx-auto w-40 sm:w-48">
               <button
                 type="button"
                 onClick={() => handleRoleChange("designer")}
-                className={`flex-1 py-2 px-2 sm:px-4 rounded-md font-medium transition-colors flex items-center justify-center text-sm sm:text-base ${
+                className={`flex-1 py-2 px-3 sm:px-4 rounded-md font-medium transition-colors flex items-center justify-center text-sm sm:text-base ${
                   selectedRole === "designer" ? "bg-black text-white shadow-sm" : "bg-white text-gray-600 hover:text-black"
                 }`}
-                style={{ borderRadius: '40px' }}
+                style={{ borderRadius: '20px' }}
               >
                 Designer
               </button>
               <button
                 type="button"
                 onClick={() => handleRoleChange("maker")}
-                className={`flex-1 py-2 px-2 sm:px-4 rounded-md font-medium transition-colors flex items-center justify-center text-sm sm:text-base ${
+                className={`flex-1 py-2 px-3 sm:px-4 rounded-md font-medium transition-colors flex items-center justify-center text-sm sm:text-base ${
                   selectedRole === "maker" ? "bg-black text-white shadow-sm" : "bg-white text-gray-600 hover:text-black"
                 }`}
-                style={{ borderRadius: '40px' }}
+                style={{ borderRadius: '20px' }}
               >
                 Maker
               </button>
@@ -276,18 +272,7 @@ const Waitlist = () => {
               placeholder="First Name"
               value={formData.first_name}
               onChange={(e) => handleInputChange("first_name", e.target.value)}
-              className="border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent"
-              style={{ 
-                width: '100%', 
-                maxWidth: '508px', 
-                height: '50px', 
-                padding: '14px 20px',
-                borderRadius: '25px',
-                border: '0.5px solid #000000',
-                background: '#FFFFFF',
-                boxSizing: 'border-box',
-                overflow: 'hidden'
-              }}
+              className="w-full h-12 sm:h-14 px-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent text-sm sm:text-base bg-white"
               required
             />
 
@@ -297,18 +282,7 @@ const Waitlist = () => {
               placeholder="Last Name"
               value={formData.last_name}
               onChange={(e) => handleInputChange("last_name", e.target.value)}
-              className="border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent"
-              style={{ 
-                width: '100%', 
-                maxWidth: '508px', 
-                height: '50px', 
-                padding: '14px 20px',
-                borderRadius: '25px',
-                border: '0.5px solid #000000',
-                background: '#FFFFFF',
-                boxSizing: 'border-box',
-                overflow: 'hidden'
-              }}
+              className="w-full h-12 sm:h-14 px-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent text-sm sm:text-base bg-white"
               required
             />
 
@@ -318,39 +292,18 @@ const Waitlist = () => {
               placeholder="Email"
               value={formData.email}
               onChange={(e) => handleInputChange("email", e.target.value)}
-              className="border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent"
-              style={{ 
-                width: '100%', 
-                maxWidth: '508px', 
-                height: '50px', 
-                padding: '14px 20px',
-                borderRadius: '25px',
-                border: '0.5px solid #000000',
-                background: '#FFFFFF',
-                boxSizing: 'border-box',
-                overflow: 'hidden'
-              }}
+              className="w-full h-12 sm:h-14 px-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent text-sm sm:text-base bg-white"
               required
             />
 
             {/* Dynamic Dropdown based on Role */}
             {selectedRole === "designer" ? (
               /* 3D Experience Dropdown for Designer */
-              <div className="relative" ref={designerDropdownRef} style={{overflow: 'visible'}}>
+              <div className="relative" ref={designerDropdownRef}>
                 <button
                   type="button"
                   onClick={() => setShowDesignerDropdown(!showDesignerDropdown)}
-                  className="w-full text-left border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent bg-white"
-                  style={{ 
-                    width: '100%', 
-                    maxWidth: '508px', 
-                    height: '50px', 
-                    padding: '14px 20px',
-                    borderRadius: '25px',
-                    border: '0.5px solid #000000',
-                    boxSizing: 'border-box',
-                    overflow: 'hidden'
-                  }}
+                  className="w-full h-12 sm:h-14 px-4 text-left border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent bg-white text-sm sm:text-base"
                 >
                   <span className={formData.experience ? "text-black" : "text-gray-500"}>
                     {formData.experience || "3D Experience"}
@@ -359,100 +312,46 @@ const Waitlist = () => {
                 </button>
                 
                 <div 
-                  className={`absolute top-full left-0 mt-2 z-50 transition-all duration-300 ease-in-out ${
+                  className={`absolute top-full left-0 right-0 mt-2 z-50 transition-all duration-300 ease-in-out ${
                     showDesignerDropdown 
                       ? 'opacity-100 scale-100 translate-y-0' 
                       : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
                   }`}
                   style={{ 
-                    width: '508px',
-                    maxWidth: '100vw',
-                    height: 'auto',
-                    minHeight: '286px',
-                    padding: '32px',
                     background: '#FFFFFF',
-                    boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.1), 5px 3px 16px rgba(198, 198, 198, 0.31)',
-                    borderRadius: '30px',
-                    border: 'none',
-                    transform: 'translateX(0)',
+                    boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.15)',
+                    borderRadius: '20px',
+                    border: '1px solid #e5e7eb',
+                    maxHeight: '300px',
                     overflow: 'hidden'
                   }}
                 >
-                  <div className="dropdown-label" style={{
-                    width: '100%',
-                    height: '19px',
-                    fontFamily: 'Inter',
-                    fontStyle: 'normal',
-                    fontWeight: '700',
-                    fontSize: '16px',
-                    lineHeight: '19px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    color: '#2C2E3D',
-                    marginBottom: '24px'
-                  }}>
-                    Select One
-                  </div>
-                  <div className="dropdown-options" style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '12px',
-                    width: '100%',
-                    height: 'auto',
-                    overflow: 'hidden'
-                  }}>
-                    {["No Experience", "Basic CAD Knowledge", "Advanced Designer"].map((option, index) => (
-                      <button
-                        key={option}
-                        type="button"
-                        onClick={() => handleDropdownOptionClick(option)}
-                        className="custom-dropdown-item hover:bg-gray-50 transition-colors"
-                        style={{
-                          boxSizing: 'border-box',
-                          display: 'flex',
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          padding: '16px 20px',
-                          gap: '9.31px',
-                          width: '100%',
-                          height: '52px',
-                          border: index === 0 ? '0.5px solid #767676' : index === 1 ? '0.5px solid #B7B7B7' : '0.5px solid #969696',
-                          borderRadius: '26px',
-                          fontFamily: 'Manrope',
-                          fontStyle: 'normal',
-                          fontWeight: '500',
-                          fontSize: '16px',
-                          lineHeight: '22px',
-                          color: '#2C2E3D',
-                          background: 'transparent',
-                          cursor: 'pointer',
-                          textAlign: 'left',
-                          overflow: 'hidden'
-                        }}
-                      >
-                        {option}
-                      </button>
-                    ))}
+                  <div className="p-4">
+                    <div className="text-sm font-semibold text-gray-700 mb-3">
+                      Select One
+                    </div>
+                    <div className="space-y-2">
+                      {["No Experience", "Basic CAD Knowledge", "Advanced Designer"].map((option, index) => (
+                        <button
+                          key={option}
+                          type="button"
+                          onClick={() => handleDropdownOptionClick(option)}
+                          className="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base border border-gray-200"
+                        >
+                          {option}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             ) : (
               /* Production Style Dropdown for Maker */
-              <div className="relative" ref={makerDropdownRef} style={{overflow: 'visible'}}>
+              <div className="relative" ref={makerDropdownRef}>
                 <button
                   type="button"
                   onClick={() => setShowMakerDropdown(!showMakerDropdown)}
-                  className="w-full text-left border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent bg-white"
-                  style={{ 
-                    width: '100%', 
-                    maxWidth: '508px', 
-                    height: '50px', 
-                    padding: '14px 20px',
-                    borderRadius: '25px',
-                    border: '0.5px solid #000000',
-                    boxSizing: 'border-box',
-                    overflow: 'hidden'
-                  }}
+                  className="w-full h-12 sm:h-14 px-4 text-left border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#E70A55] focus:border-transparent bg-white text-sm sm:text-base"
                 >
                   <span className={formData.production_style ? "text-black" : "text-gray-500"}>
                     {formData.production_style || "Production Style"}
@@ -461,115 +360,68 @@ const Waitlist = () => {
                 </button>
                 
                 <div 
-                  className={`absolute top-full left-0 mt-2 z-50 transition-all duration-300 ease-in-out ${
+                  className={`absolute top-full left-0 right-0 mt-2 z-50 transition-all duration-300 ease-in-out ${
                     showMakerDropdown 
                       ? 'opacity-100 scale-100 translate-y-0' 
                       : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
                   }`}
                   style={{ 
-                    width: '508px',
-                    maxWidth: '100vw',
-                    height: 'auto',
-                    minHeight: '286px',
-                    padding: '32px',
                     background: '#FFFFFF',
-                    boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.1), 5px 3px 16px rgba(198, 198, 198, 0.31)',
-                    borderRadius: '30px',
-                    border: 'none',
-                    transform: 'translateX(0)',
+                    boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.15)',
+                    borderRadius: '20px',
+                    border: '1px solid #e5e7eb',
+                    maxHeight: '300px',
                     overflow: 'hidden'
                   }}
                 >
-                  <div className="dropdown-label" style={{
-                    width: '100%',
-                    height: '19px',
-                    fontFamily: 'Inter',
-                    fontStyle: 'normal',
-                    fontWeight: '700',
-                    fontSize: '16px',
-                    lineHeight: '19px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    color: '#2C2E3D',
-                    marginBottom: '24px'
-                  }}>
-                    Select One
-                  </div>
-                  <div className="dropdown-options" style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '12px',
-                    width: '100%',
-                    height: 'auto',
-                    overflow: 'hidden'
-                  }}>
-                    {["Digital Production", "Handcrafted Production", "Hybrid"].map((option, index) => (
-                      <button
-                        key={option}
-                        type="button"
-                        onClick={() => handleDropdownOptionClick(option)}
-                        className="custom-dropdown-item hover:bg-gray-50 transition-colors"
-                        style={{
-                          boxSizing: 'border-box',
-                          display: 'flex',
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          padding: '16px 20px',
-                          gap: '9.31px',
-                          width: '100%',
-                          height: '52px',
-                          border: index === 0 ? '0.5px solid #767676' : index === 1 ? '0.5px solid #B7B7B7' : '0.5px solid #969696',
-                          borderRadius: '26px',
-                          fontFamily: 'Manrope',
-                          fontStyle: 'normal',
-                          fontWeight: '500',
-                          fontSize: '16px',
-                          lineHeight: '22px',
-                          color: '#2C2E3D',
-                          background: 'transparent',
-                          cursor: 'pointer',
-                          textAlign: 'left',
-                          overflow: 'hidden'
-                        }}
-                      >
-                        {option}
-                      </button>
-                    ))}
+                  <div className="p-4">
+                    <div className="text-sm font-semibold text-gray-700 mb-3">
+                      Select One
+                    </div>
+                    <div className="space-y-2">
+                      {["Digital Production", "Handcrafted Production", "Hybrid"].map((option, index) => (
+                        <button
+                          key={option}
+                          type="button"
+                          onClick={() => handleDropdownOptionClick(option)}
+                          className="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base border border-gray-200"
+                        >
+                          {option}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             )}
 
-            </div>
-
-            {/* Submit Button - Brought closer */}
-            <div className="flex justify-center mt-4">
+            {/* Submit Button */}
+            <div className="flex justify-center pt-4">
               <Button
                 type="button"
                 onClick={handleSubmit}
                 disabled={isLoading}
-                className="text-white font-medium transition-colors mt-4  hover:bg-[#d1094a]"
+                className="w-32 h-12 sm:h-14 text-white font-medium transition-colors hover:bg-[#d1094a] rounded-full text-sm sm:text-base"
                 style={{
-                  display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',
-                  padding: '14px 40px', gap: '10px', width: '131px', height: '55px',
-                  background: '#E70A55', borderRadius: '22px', border: 'none'
+                  background: '#E70A55',
+                  border: 'none'
                 }}
               >
                 {isLoading ? "Joining..." : "Join"}
               </Button>
             </div>
 
-            {/* Free Early Access Text - Brought closer to join button */}
-            <div className="text-center mt-2">
-              <p className="text-gray-500 mt-2 text-sm font-manrope">Free Early Access</p>
+            {/* Free Early Access Text */}
+            <div className="text-center">
+              <p className="text-gray-500 text-sm sm:text-base font-manrope">Free Early Access</p>
             </div>
 
-            {/* Countdown Timer - Much further away from early access */}
-            <div className="text-center mt-16 lg:mt-36">
-              <div className="text-lg sm:text-xl lg:text-2xl font-bold text-black 2xl:mt-20 mt-8 lg:mt-32 mb-8 lg:mb-14">
+            {/* Countdown Timer */}
+            <div className="text-center pt-12 lg:pt-20">
+              <div className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-black mb-1">
                 {formatNumber(countdown.days)} : {formatNumber(countdown.hours)} : {formatNumber(countdown.minutes)} : {formatNumber(countdown.seconds)}
               </div>
-              <p className="text-sm -mt-6 lg:-mt-12 text-gray-600">
+              <p className="text-xs sm:text-sm text-gray-600">
                 Get Ready For <span className="text-[#E70A55] font-semibold">October 1st</span>
               </p>
             </div>
@@ -588,25 +440,23 @@ const Waitlist = () => {
         }}
       >
         {/* Central Image - Background layer */}
-        <div className={`absolute inset-0 flex items-center justify-center transform transition-all duration-1000 delay-300 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`} style={{ zIndex: 1 }} id="central-image">
+        <div className={`absolute inset-0 flex items-center justify-center transform transition-all duration-1000 delay-300 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`} style={{ zIndex: 1 }}>
           <img
-            src={selectedRole === "designer" ? "/image 2.png" : "/image 1.png"}
+            src={selectedRole === "designer" ? "/WaitImage1.jpg" : "/Waitimage.jpg"}
             alt={selectedRole === "designer" ? "Designer Background" : "Maker Background"}
             className="object-contain"
             style={{ 
-              width: 'min(90vw, 900px)', 
-              height: 'min(90vh, 600px)', 
-              minWidth: '400px',
-              minHeight: '300px',
-              maxWidth: '1000px',
-              maxHeight: '700px'
+              width: 'min(90%, 800px)', 
+              height: 'min(90%, 900px)', 
+              maxWidth: '900px',
+              maxHeight: '1000px'
             }}
           />
         </div>
 
-        {/* Text Overlay Layer - CUD and LIY positioned precisely on image with increased size */}
+        {/* Text Overlay Layer - CUD and LIY positioned precisely on image */}
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
-          {/* CUD Text - Top Left of image area - Positioned diagonally */}
+          {/* CUD Text - Top Left of image area */}
           <div 
             className={`absolute transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
             style={{
@@ -618,10 +468,10 @@ const Waitlist = () => {
             <div 
               className="font-bold select-none"
               style={{ 
-                fontSize: 'clamp(4rem, 10vw, 12rem)',
+                fontSize: 'clamp(3rem, 8vw, 10rem)',
                 fontFamily: 'Manrope',
                 color: 'transparent',
-                WebkitTextStroke: '1.75px rgba(255, 255, 255, 0.58)',
+                WebkitTextStroke: '1.5px rgba(255, 255, 255, 0.58)',
                 background: 'transparent',
                 lineHeight: 0.8
               } as React.CSSProperties}
@@ -630,7 +480,7 @@ const Waitlist = () => {
             </div>
           </div>
 
-          {/* LIY Text - Bottom Right of image area - Positioned diagonally */}
+          {/* LIY Text - Bottom Right of image area */}
           <div 
             className={`absolute transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
             style={{
@@ -642,10 +492,10 @@ const Waitlist = () => {
             <div 
               className="font-bold select-none"
               style={{ 
-                fontSize: 'clamp(4rem, 10vw, 12rem)',
+                fontSize: 'clamp(3rem, 8vw, 10rem)',
                 fontFamily: 'Manrope',
                 color: 'transparent',
-                WebkitTextStroke: '1.75px rgba(255, 255, 255, 0.58)',
+                WebkitTextStroke: '1.5px rgba(255, 255, 255, 0.58)',
                 background: 'transparent',
                 lineHeight: 0.8
               } as React.CSSProperties}

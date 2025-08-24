@@ -244,7 +244,7 @@ const Waitlist = () => {
   return (
     <div className="h-screen flex flex-col lg:flex-row bg-white overflow-hidden">
       {/* Left Section - Waitlist Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-4 lg:py-8 overflow-y-auto">
+      <div className="w-full lg:w-1/2 bg-gradient-to-br from-pink-50 via-white to-orange-50 lg:bg-white flex items-center justify-center px-4 sm:px-6 lg:px-8 py-4 lg:py-8 overflow-y-auto">
         <div className={`w-full max-w-md lg:max-w-lg xl:max-w-xl transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           {/* Logo and Header */}
           <div className={`text-center transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
@@ -260,7 +260,7 @@ const Waitlist = () => {
                 aspectRatio: 'auto'
               }}
             />
-            <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-abril font-bold text-black mb-3" style={{ fontFamily: '"Abril Fatface", serif' }}>
+            <h2 className="text-2xl sm:text-2xl lg:text-3xl xl:text-4xl font-abril font-bold text-black mb-3" style={{ fontFamily: '"Abril Fatface", serif' }}>
               {selectedRole === "designer" ? "Where Vibe Designers Meet Makers" : "Join the Maker Economy"}
             </h2>
             <p className="text-gray-600 font-manrope text-sm sm:text-base mb-6 px-4 lg:px-0">

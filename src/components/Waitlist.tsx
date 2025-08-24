@@ -244,7 +244,7 @@ const Waitlist = () => {
   return (
     <div className="h-screen flex flex-col lg:flex-row bg-white overflow-hidden">
       {/* Left Section - Waitlist Form */}
-      <div className="w-full lg:w-1/2 bg-gradient-to-br from-pink-50 via-white to-orange-50 lg:bg-white flex items-center justify-center px-4 sm:px-6 lg:px-8 py-4 lg:py-8 overflow-y-auto">
+      <div className="w-full lg:w-1/2 bg-gradient-to-br from-pink-100 via-pink-50 to-orange-200 lg:bg-white flex items-center justify-center px-4 sm:px-6 lg:px-8 py-4 lg:py-8 overflow-y-auto">
         <div className={`w-full max-w-md lg:max-w-lg xl:max-w-xl transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           {/* Logo and Header */}
           <div className={`text-center transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>

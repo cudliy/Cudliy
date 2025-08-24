@@ -228,4 +228,16 @@
     color: #E70A55;
     font-weight: bold;
   }
+
+  /* Mobile gradient - only shows on mobile devices */
+  .mobile-gradient {
+    background: linear-gradient(to bottom right, #f9a8d4, #fce7f3, #fb923c);
+  }
+
+  /* Override gradient on desktop */
+  @media (min-width: 1024px) {
+    .mobile-gradient {
+      background: #ffffff !important;
+    }
+  }
 }
